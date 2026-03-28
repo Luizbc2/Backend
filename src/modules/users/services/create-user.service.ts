@@ -63,6 +63,16 @@ export class CreateUserService {
       };
     }
 
+    const existingUser = await this.userRepository.findByEmail(email);
+
+    if (existingUser) {
+      return {
+        success: false,
+        message: "Email is already in use.",
+        statusCode: 409,
+      };
+    }
+
     const createdUser = await this.userRepository.create({
       name,
       email,

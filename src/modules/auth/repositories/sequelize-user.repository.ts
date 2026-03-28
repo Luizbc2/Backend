@@ -1,3 +1,4 @@
+import { CreateUserInputDto } from "../../users/dtos/create-user.dto";
 import { AuthenticatedUser } from "../auth.types";
 import { UserModel } from "../models/user.model";
 import { UserRepository } from "./user.repository";
@@ -14,6 +15,21 @@ export class SequelizeUserRepository implements UserRepository {
       return null;
     }
 
+    return this.toAuthenticatedUser(user);
+  }
+
+  public async create(input: CreateUserInputDto): Promise<AuthenticatedUser> {
+    const user = await UserModel.create({
+      name: input.name,
+      email: input.email,
+      cpf: input.cpf,
+      password: input.password
+    });
+
+    return this.toAuthenticatedUser(user);
+  }
+
+  private toAuthenticatedUser(user: UserModel): AuthenticatedUser {
     return {
       id: user.id,
       name: user.name,

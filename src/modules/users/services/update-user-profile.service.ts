@@ -8,6 +8,7 @@ import { hashPassword } from "../../auth/utils/password.util";
 
 type UpdateUserProfileServiceInput = UpdateUserProfileInput & {
   authenticatedUserId: number;
+  email?: string;
   userId: number;
 };
 
@@ -58,6 +59,14 @@ export class UpdateUserProfileService {
         success: false,
         message: "User not found.",
         statusCode: 404,
+      };
+    }
+
+    if (input.email && input.email.trim().toLowerCase() !== user.email.toLowerCase()) {
+      return {
+        success: false,
+        message: "Email cannot be changed.",
+        statusCode: 400,
       };
     }
 

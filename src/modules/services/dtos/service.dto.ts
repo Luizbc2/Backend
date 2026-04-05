@@ -24,6 +24,7 @@ export type UpdateServiceRequestDto = {
 };
 
 export type ListServicesQueryDto = {
+  limit?: number;
   page?: number;
   search?: string;
 };

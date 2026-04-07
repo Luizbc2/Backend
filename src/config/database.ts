@@ -5,6 +5,7 @@ import { UserModel } from "../modules/auth/models/user.model";
 import { ClientModel } from "../modules/clients/models/client.model";
 import { hashPassword, isPasswordHashed } from "../modules/auth/utils/password.util";
 import { ServiceModel } from "../modules/services/models/service.model";
+import { ProfessionalModel } from "../modules/professionals/models/professional.model";
 
 class Database {
   private sequelize: Sequelize | null = null;
@@ -37,6 +38,7 @@ class Database {
     UserModel.initialize(this.getConnection());
     ClientModel.initialize(this.getConnection());
     ServiceModel.initialize(this.getConnection());
+    ProfessionalModel.initialize(this.getConnection());
     this.modelsInitialized = true;
   }
 

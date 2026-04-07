@@ -4,8 +4,6 @@ export type ProfessionalDto = {
   email: string;
   phone: string;
   specialty: string;
-  shiftStart: string;
-  shiftEnd: string;
   status: string;
 };
 
@@ -14,8 +12,6 @@ export type CreateProfessionalRequestDto = {
   email: string;
   phone: string;
   specialty: string;
-  shiftStart: string;
-  shiftEnd: string;
   status: string;
 };
 
@@ -24,12 +20,11 @@ export type UpdateProfessionalRequestDto = {
   email: string;
   phone: string;
   specialty: string;
-  shiftStart: string;
-  shiftEnd: string;
   status: string;
 };
 
 export type ListProfessionalsQueryDto = {
+  limit?: number;
   page?: number;
   search?: string;
 };

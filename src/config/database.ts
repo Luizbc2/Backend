@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize";
 
 import { env } from "./env";
+import { AppointmentModel } from "../modules/appointments/models/appointment.model";
 import { UserModel } from "../modules/auth/models/user.model";
 import { ClientModel } from "../modules/clients/models/client.model";
 import { hashPassword, isPasswordHashed } from "../modules/auth/utils/password.util";
@@ -39,6 +40,7 @@ class Database {
     ClientModel.initialize(this.getConnection());
     ServiceModel.initialize(this.getConnection());
     ProfessionalModel.initialize(this.getConnection());
+    AppointmentModel.initialize(this.getConnection());
     this.modelsInitialized = true;
   }
 
